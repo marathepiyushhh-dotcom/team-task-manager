@@ -1,0 +1,137 @@
+# 🚀 Team Task Manager
+
+A full-stack task management application built to help teams organize projects, assign tasks, and track progress efficiently.
+
+---
+
+## 🌟 Overview
+
+Team Task Manager is designed to simplify collaboration within a team.
+It allows users to create projects, assign tasks, and monitor work status in a structured way.
+
+This project demonstrates a complete full-stack workflow using modern technologies including authentication, REST APIs, and deployment.
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+
+* Java (Spring Boot)
+* Spring Security + JWT Authentication
+* Hibernate / JPA
+* MySQL (Railway)
+
+### Frontend
+
+* React (Vite)
+* Axios
+* CSS
+
+### Deployment
+
+* Backend: Railway
+* Frontend: Vercel
+
+---
+
+## 🔐 Features
+
+* User Registration & Login (JWT-based authentication)
+* Create and manage projects
+* Assign tasks to users
+* Track task status (TODO / IN_PROGRESS / DONE)
+* Secure APIs with role-based access
+* RESTful backend architecture
+
+---
+
+## 📂 Project Structure
+
+```
+Team-Task-Manager/
+│
+├── Backend/            # Spring Boot backend
+├── Frontend/           # React frontend
+└── README.md
+```
+
+---
+
+## ⚙️ Setup Instructions
+
+### Backend
+
+1. Navigate to backend folder:
+
+```
+cd Backend
+```
+
+2. Run the application:
+
+```
+mvn spring-boot:run
+```
+
+---
+
+### Frontend
+
+1. Navigate to frontend:
+
+```
+cd Frontend/frontend
+```
+
+2. Install dependencies:
+
+```
+npm install
+```
+
+3. Start development server:
+
+```
+npm run dev
+```
+
+---
+
+## 🌐 Live Demo
+
+* 🔗 Backend: *(add your Railway link here)*
+* 🔗 Frontend: *(add your Vercel link here)*
+
+---
+
+## 💡 Key Learnings
+
+* Implemented JWT authentication and secure API handling
+* Learned deployment of full-stack apps using Railway & Vercel
+* Understood environment variable management for production
+* Built scalable backend structure using Spring Boot
+
+---
+
+## 🚀 Future Improvements
+
+* Add notifications for task updates
+* Implement file attachments
+* Improve UI/UX design
+* Add team chat functionality
+
+---
+
+## 👨‍💻 Author
+
+**Piyush Marathe**
+Java Full Stack Developer
+
+---
+
+## ⭐ Final Note
+
+This project was built as part of a learning and placement preparation journey, focusing on real-world development practices and deployment.
+
+---
