@@ -1,57 +1,62 @@
 import { useEffect, useState } from "react";
-import api from "../api/axios";
+import { getDashboard } from "../api/dashboard";
+import { Bar } from "react-chartjs-2";
+import "./Dashboard.css";
 
-function Dashboard({ token }) {
-  const [projects, setProjects] = useState([]);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-
-  const fetchProjects = async () => {
-    const res = await api.get("/projects", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    setProjects(res.data);
-  };
-
-  const createProject = async () => {
-    await api.post(
-      "/projects",
-      { name, description },
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    fetchProjects();
-  };
+export default function Dashboard() {
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetchProjects();
+    getDashboard()
+      .then(res => setData(res.data))
+      .catch(err => console.log(err));
   }, []);
 
+  if (!data) return <h2>Loading...</h2>;
+
+  const chartData = {
+    labels: ["Completed", "Pending"],
+    datasets: [
+      {
+        label: "Tasks",
+        data: [data.completedTasks, data.pendingTasks],
+      },
+    ],
+  };
+
   return (
-    <div>
-      <h2>Team Task Manager</h2>
+    <div className="dashboard">
 
-      <input
-        placeholder="Project Name"
-        onChange={(e) => setName(e.target.value)}
-      />
+      <h1>📊 Dashboard</h1>
 
-      <input
-        placeholder="Description"
-        onChange={(e) => setDescription(e.target.value)}
-      />
+      {/* 🔹 STATS */}
+      <div className="cards">
+        <div className="card green">
+          <h3>Total Projects</h3>
+          <p>{data.totalProjects}</p>
+        </div>
 
-      <button onClick={createProject}>Create Project</button>
+        <div className="card blue">
+          <h3>Total Tasks</h3>
+          <p>{data.totalTasks}</p>
+        </div>
 
-      <h3>Projects</h3>
-      <ul>
-        {projects.map((p) => (
-          <li key={p.id}>
-            {p.name} - {p.description}
-          </li>
-        ))}
-      </ul>
+        <div className="card purple">
+          <h3>Completed</h3>
+          <p>{data.completedTasks}</p>
+        </div>
+
+        <div className="card orange">
+          <h3>Pending</h3>
+          <p>{data.pendingTasks}</p>
+        </div>
+      </div>
+
+      {/* 🔹 CHART */}
+      <div className="chart-container">
+        <Bar data={chartData} />
+      </div>
+
     </div>
   );
 }
-
-export default Dashboard;
